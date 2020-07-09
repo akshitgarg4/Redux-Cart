@@ -1,11 +1,18 @@
 import React from "react";
+import { connect } from "react-redux";
 import ProductCard from "./ProductCard";
-function Home() {
+function Home(props) {
   return (
     <div className="home-container">
-      <ProductCard />
+      {props.products.map((item) => {
+        return <ProductCard item={item} key={item.id} />;
+      })}
     </div>
   );
 }
-
-export default Home;
+function mapStateToProps(state) {
+  return {
+    products: state.products,
+  };
+}
+export default connect(mapStateToProps)(Home);
