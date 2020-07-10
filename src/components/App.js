@@ -7,14 +7,14 @@ import Page404 from "./Page404";
 import ProductProfile from './ProductProfile';
 
 function App(props) {
-  const products = props.products;
+  const {products,cart,dispatch} = props;
   return (
     <Router>
       <div>
         <Navbar />
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route path="/profile/:id" render={(props)=>{return (<ProductProfile {...props} products={products}/>)}} />
+          <Route path="/profile/:id" render={(props)=>{return (<ProductProfile {...props} products={products} dispatch={dispatch} cart={cart}/>)}} />
 
           <Route component={Page404} />
         </Switch>
@@ -25,6 +25,7 @@ function App(props) {
 function mapStateToProps(state) {
   return {
     products: state.products,
+    cart:state.cart
   };
 }
 export default connect(mapStateToProps)(App);

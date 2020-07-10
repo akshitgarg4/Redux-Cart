@@ -1,13 +1,24 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import {addToCart} from '../actions/cart';
+import {addToCart, removeFromCart} from '../actions/cart';
 
 function ProductCard(props) {
-  const { item } = props;
-  
+  const { item ,cart} = props;
+
   const handleClick = (element) =>{
       props.dispatch(addToCart(element));
   }
+  const handleClick2 = (element) =>{
+    props.dispatch(removeFromCart(element));
+}
+
+  var itemInCart=false;
+  cart.forEach((cartItem)=>{
+    if(cartItem.id === item.id)
+    {
+        itemInCart=true;
+    }
+  })
 
   return (
     
@@ -17,7 +28,8 @@ function ProductCard(props) {
         <img src={item.src} alt="product-img" />
         </Link>
         <button className="price">{`Rs ${item.price}`}</button>
-        <button className="add-to-cart" onClick={()=>handleClick(item)}>ADD TO CART</button>
+        {itemInCart ? <button className="add-to-cart remove" onClick={()=>handleClick2(item)}>REMOVE FROM CART</button>
+          : <button className="add-to-cart " onClick={()=>handleClick(item)}>ADD TO CART</button>}
       </div>
    
   );

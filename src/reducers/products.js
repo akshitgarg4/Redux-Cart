@@ -1,3 +1,5 @@
+import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/actionTypes";
+
 const initialProductsState = [
   {
     id: 0,
@@ -53,6 +55,27 @@ const initialProductsState = [
     features: ["16 GB STORAGE", "STYLISH", "Easy to Carry in wallet"],
   },
 ];
-export default function products(state = initialProductsState) {
-  return state;
+export default function products(state = initialProductsState,action) {
+  switch (action.type) {
+    case ADD_TO_CART:
+      var newProduct=state.filter(element=>{
+        if(element.id === action.item.id)
+        {
+          element.qty+=1;
+        }
+        return element;
+      })
+      return newProduct;
+    case REMOVE_FROM_CART:
+      var newProduct2=state.filter(element=>{
+        if(element.id === action.item.id)
+        {
+          element.qty=0;
+        }
+        return element;
+      })
+      return newProduct2;
+    default:
+      return state;
+  }
 }

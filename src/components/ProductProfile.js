@@ -1,8 +1,25 @@
 import React from "react";
+import {addToCart, removeFromCart} from '../actions/cart';
+
 function ProductProfile(props) {
+
     const products=props.products;
     const id=props.match.params.id;
     const curr=products[id];
+    var itemInCart=false;
+    const handleClick = (element) =>{
+        props.dispatch(addToCart(element));
+    }
+    const handleClick2 = (element) =>{
+        props.dispatch(removeFromCart(element));
+    }
+    props.cart.forEach((cartItem)=>{
+         if(cartItem.id === curr.id)
+        {
+            itemInCart=true;
+         }
+     })
+
   return (
     <div className="home-container">
         <div className="product-container">
@@ -24,7 +41,8 @@ function ProductProfile(props) {
                 <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="plus"/>
                 <br/>
                 <button className="buy">Place Order</button>
-                <button className="add-to-cart remove">REMOVE FROM CART</button>
+                {itemInCart ? <button className="add-to-cart remove" onClick={()=>handleClick2(curr)}>REMOVE FROM CART</button>
+                    : <button className="add-to-cart " onClick={()=>handleClick(curr)}>ADD TO CART</button>}
             </div>
         </div>
     </div>
