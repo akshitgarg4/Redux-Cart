@@ -1,4 +1,5 @@
 import React from "react";
+import {Link} from 'react-router-dom';
 import {addToCart, removeFromCart} from '../actions/cart';
 import {increaseQty1,decreaseQty1} from '../actions/products';
 
@@ -48,7 +49,9 @@ function ProductProfile(props) {
                 <span className="text">{curr.qty}</span>
                 <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="minus"  onClick={()=>decrease(curr)}/>
                 <br/>
+                <Link to={`/Bill/products/${curr.title}`}>
                 <button className="buy">Place Order</button>
+                </Link>
                 {itemInCart ? <button className="add-to-cart remove" onClick={()=>handleClick2(curr)}>REMOVE FROM CART</button>
                     : <button className="add-to-cart " onClick={()=>handleClick(curr)}>ADD TO CART</button>}
             </div>
