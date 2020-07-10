@@ -35,12 +35,9 @@ function ProductProfile(props) {
                         {curr.features.map((ele)=>{return <li key={ele}>{ele}</li>})} 
                     </ul>
                 </span>
+                <button className="price"> PRICE </button>
                 <button className="price">{`RS ${curr.price}`}</button>
-                <img className="change" src="https://image.flaticon.com/icons/svg/992/992651.svg" alt="plus"/>&nbsp;
-                <span className="text">{curr.qty}</span>
-                <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="plus"/>
                 <br/>
-                <button className="buy">Place Order</button>
                 {itemInCart ? <button className="add-to-cart remove" onClick={()=>handleClick2(curr)}>REMOVE FROM CART</button>
                     : <button className="add-to-cart " onClick={()=>handleClick(curr)}>ADD TO CART</button>}
             </div>
