@@ -1,4 +1,4 @@
-import { ADD_TO_CART, REMOVE_FROM_CART } from "../actions/actionTypes";
+import { INCREASE_QTY1, DECREASE_QTY1 } from "../actions/actionTypes";
 
 const initialProductsState = [
   {
@@ -57,23 +57,21 @@ const initialProductsState = [
 ];
 export default function products(state = initialProductsState,action) {
   switch (action.type) {
-    case ADD_TO_CART:
-      var newProduct=state.filter(element=>{
-        if(element.id === action.item.id)
-        {
-          element.qty+=1;
+    case INCREASE_QTY1:
+      var newProduct1 = state.filter((element) => {
+        if (element.id === action.item.id) {
+          element.qty += 1;
         }
         return element;
-      })
-      return newProduct;
-    case REMOVE_FROM_CART:
-      var newProduct2=state.filter(element=>{
-        if(element.id === action.item.id)
-        {
-          element.qty=0;
+      });
+      return newProduct1;
+    case DECREASE_QTY1:
+      var newProduct2 = state.filter((element) => {
+        if (element.id === action.item.id && element.qty > 0) {
+          element.qty -= 1;
         }
         return element;
-      })
+      });
       return newProduct2;
     default:
       return state;

@@ -1,5 +1,6 @@
 import React from "react";
 import {addToCart, removeFromCart} from '../actions/cart';
+import {increaseQty1,decreaseQty1} from '../actions/products';
 
 function ProductProfile(props) {
 
@@ -12,6 +13,13 @@ function ProductProfile(props) {
     }
     const handleClick2 = (element) =>{
         props.dispatch(removeFromCart(element));
+    }
+    const increase = (element) =>{
+        props.dispatch(increaseQty1(element));
+    }
+    
+    const decrease = (element) =>{
+        props.dispatch(decreaseQty1(element));
     }
     props.cart.forEach((cartItem)=>{
          if(cartItem.id === curr.id)
@@ -35,9 +43,12 @@ function ProductProfile(props) {
                         {curr.features.map((ele)=>{return <li key={ele}>{ele}</li>})} 
                     </ul>
                 </span>
-                <button className="price"> PRICE </button>
                 <button className="price">{`RS ${curr.price}`}</button>
+                <img className="change" src="https://image.flaticon.com/icons/svg/992/992651.svg" alt="plus"  onClick={()=>increase(curr)}/>
+                <span className="text">{curr.qty}</span>
+                <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="minus"  onClick={()=>decrease(curr)}/>
                 <br/>
+                <button className="buy">Place Order</button>
                 {itemInCart ? <button className="add-to-cart remove" onClick={()=>handleClick2(curr)}>REMOVE FROM CART</button>
                     : <button className="add-to-cart " onClick={()=>handleClick(curr)}>ADD TO CART</button>}
             </div>

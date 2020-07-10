@@ -1,5 +1,5 @@
 import React from "react";
-import { removeFromCart} from '../actions/cart';
+import { removeFromCart,increaseQty,decreaseQty} from '../actions/cart';
 
 function CartCard(props) {
 
@@ -7,6 +7,14 @@ function CartCard(props) {
     const handleClick2 = (element) =>{
         dispatch(removeFromCart(element));
     }
+    const increase = (element) =>{
+        dispatch(increaseQty(element));
+    }
+    
+    const decrease = (element) =>{
+        dispatch(decreaseQty(element));
+    }
+    
     
 
   return (
@@ -25,9 +33,9 @@ function CartCard(props) {
                     </ul>
                 </span>
                 <button className="price">{`RS ${item.price}`}</button>
-                <img className="change" src="https://image.flaticon.com/icons/svg/992/992651.svg" alt="plus"/>
+                <img className="change" src="https://image.flaticon.com/icons/svg/992/992651.svg" alt="plus" onClick={()=>increase(item)}/>
                 <span className="text">{item.qty}</span>
-                <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="plus"/>
+                <img className="change" src="https://image.flaticon.com/icons/svg/659/659892.svg" alt="minus" onClick={()=>decrease(item)}/>
                 <br/>
                 <button className="buy">Place Order</button>
                 <button className="add-to-cart remove" onClick={()=>handleClick2(item)}>REMOVE FROM CART</button>
