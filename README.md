@@ -4,8 +4,9 @@
   <li>Use command npm install to download the dependencies. </li>
   <li>Give command npm start that will automatically start the app in the browser.</li>
 </ul>
-
-## Key Features:-
+<h2> Project Execution:-</h2>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="https://github.com/akshitgarg4/Redux-Cart/blob/master/ScreenShots/Redux-Cart.gif" width="60%px" height="40%">
+<h2> Key Features:- </h2>
 <ul>
   <li>Home Page listing all the available Products.</li>
   <img src="ScreenShots/home.png" width="610px" height="380px" />
