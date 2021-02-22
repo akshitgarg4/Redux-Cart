@@ -51,7 +51,7 @@ const initialProductsState = [
     price: 450,
     qty: 0,
     src:
-      "https://www.customshape.in/media/catalog/product/cache/1/thumbnail/700x/17f82f742ffe127f42dca9de82fb58b1/c/a/card-otg-usb-pendrive.jpg",
+      "https://rukminim1.flixcart.com/image/312/312/kgsb1jk0/pendrive/pendrive/g/r/e/karibu-metal-card-pendrive-original-imafwyydrgumwznp.jpeg?q=70",
     features: ["16 GB STORAGE", "STYLISH", "Easy to Carry in wallet"],
   },
 ];
